@@ -1,0 +1,1 @@
+<p>nome: {{ $patient->name }}</p>
