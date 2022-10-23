@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Patient;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
+
 
 class UserController extends Controller
 {
@@ -107,6 +109,13 @@ class UserController extends Controller
   {
     Patient::findOrfail($request->id)->update($request->all());
     return redirect()->route('paciente.index')->with('categoriaedit', 'Produto editado com sucesso!');
+  }
+
+  public function generatePdf($id)
+  {
+    $data = Patient::find($id);
+    $pdf = Pdf::loadView('pdf.dicePatient', compact('data'));
+    return $pdf->stream('dicePatient.pdf');
   }
     
 }

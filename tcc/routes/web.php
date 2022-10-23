@@ -24,4 +24,5 @@ Route::prefix('paciente')->group(function () {
     Route::match(['get', 'post'], '/edit/{id}', [UserController::class, 'edit'])->name('paciente.edit');
     Route::match(['get', 'post'], '/view/{id}', [UserController::class, 'view'])->name('paciente.view');
     Route::put('/update/{id}', [UserController::class, 'update'])->name('paciente.update');
+    Route::match(['get', 'post'], 'generatePdf/{id}', [UserController::class, 'generatePdf'])->name('paciente.generatePdf');
 });

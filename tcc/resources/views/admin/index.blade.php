@@ -34,10 +34,8 @@
             <button type="submit" class="btn btn-danger">deletar</button>
             <a href="{{route('paciente.edit',$patient->id)}}" class="btn btn-primary">editar</a>
             <a href="{{route('paciente.view',$patient->id)}}" class="btn btn-primary">Visualizar</a>
-            <a href="">imprimir</a>
+            <a href="{{route('paciente.generatePdf',$patient->id)}}" target="_blank">imprimir</a>
         </td>
-
-
       </tr>
       @endforeach
 
