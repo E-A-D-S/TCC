@@ -2,51 +2,26 @@
 
 namespace App\Http\Controllers;
 
-
+use App\Mail\SendMail;
 use App\Models\Patient;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
-
+use Illuminate\Support\Facades\Mail;
 
 class UserController extends Controller
 {
-
+  
   function home () {
     return View('index');
+  }
+  function homeScreen () {
+    return View('homeScreen');
   }
 
   function index()
   {
    $patient = Patient::all();
     return view('admin.index', compact('patient'));
-  }
-
-  public function create(Request $request)
-  {
-    $request->validate([
-      'nome' => 'required',
-      'nascimento' => 'required',
-      'idade' => 'required',
-      'responsavel' => 'required',
-      'telefone' => 'required',
-      'RG' => 'required',
-      'endereco' => 'required',
-      'motivoconsulta' => 'required',
-
-          
-    ]);
-    $data = array(
-      'nome'=> $request->nome,
-      'nascimento' => $request->nascimento,
-      'idade' => $request->idade,
-      'responsavel' => $request->responsavel,
-      'telefone' => $request->telefone,
-      'RG' => $request->RG,
-      'endereco' => $request->endereco,
-      'motivoconsulta' => $request->motivoconsulta,
-      
-    );
-    return redirect()->route('index', compact('result')); 
   }
 
   public function store(Request $request)
@@ -72,7 +47,15 @@ class UserController extends Controller
     $patient->city_father = $request->city_father;
       
     $patient ->save();
-    return redirect()->route('paciente.home')->with('categoriacad', 'Produto cadastrado com sucesso!');
+
+    $data = array(
+      'name'=> $request->name,
+      'birth_date' => $request->birth_date,
+      'time_service' => $request->time_service,
+      'consultation' => $request->consultation,
+    );
+    Mail::to(config('mail.from.address'))->send(new SendMail($data));
+    return redirect()->route('paciente.home')->with('paciente', 'Cadastrado feito com sucesso!');
   }
 
   public function destroy($id)

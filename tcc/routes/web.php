@@ -14,7 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::match(['get', 'post'], '/', [UserController::class, 'home'])->name('paciente.home');
+Route::match(['get', 'post'], '/home', [UserController::class, 'home'])->name('paciente.home');
+Route::match(['get', 'post'], '/', [UserController::class, 'homeScreen'])->name('paciente.homeScreen');
 
 Route::prefix('paciente')->group(function () {
     Route::match(['get', 'post'], '', [UserController::class, 'index'])->name('paciente.index');
@@ -26,3 +27,9 @@ Route::prefix('paciente')->group(function () {
     Route::put('/update/{id}', [UserController::class, 'update'])->name('paciente.update');
     Route::match(['get', 'post'], 'generatePdf/{id}', [UserController::class, 'generatePdf'])->name('paciente.generatePdf');
 });
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified'
+]);

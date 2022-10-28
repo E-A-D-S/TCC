@@ -40,7 +40,7 @@ Parágrafo único: O paciente (Contratante) que tiver seu tratamento interrompid
     <p>Cláusula 10º - O paciente (Contratante) pode HÁ QUALQUER momento desistir do atendimento.</p>
     <p style="height:5px ;">TERMO DE CONSENTIMENTO INFORMADO</p>
     <p style="height:0px ;">Eu, <spam style="border-bottom: 1px solid black; width: 410px; display: inline-block; height:10px;"> {{ $data->name }} </spam>, abaixo assinado, portador da cédula de identidade sob o</p>
-    <p style="height:0px ;">nº <spam style="border-bottom: 1px solid black; width: 350px; display: inline-block; height:10px;"> {{ $data->cpf }} </spam>, aceito que o modelo de atendimento seja realizado conforme estabelece o</p>
+    <p style="height:0px ;">nº <spam style="border-bottom: 1px solid black; width: 350px; display: inline-block; height:10px;"> {{ $data->rg }} </spam>, aceito que o modelo de atendimento seja realizado conforme estabelece o</p>
     <p style="height:10px ;">presente contrato. Esta instituição assegura a confidenciabilidade e a privacidade, bem como a proteção da imagem, garantindo a não utilização das informações em prejuízo da pessoa ou grupo.</p>
     <p>As informações obtidas com estes procedimentos, registrados em prontuário e aquelas obtida através de exames ou imagens poderão ser utilizadas como material didático em aulas, seminários e eventos científicos, salvaguardando a identificação do paciente.</p>
     <div style="margin-left: 400px ; text-align:center;">
@@ -49,4 +49,48 @@ Parágrafo único: O paciente (Contratante) que tiver seu tratamento interrompid
         <p style="margin-top: 40px;">São Jerônimo,_____ de ____________________de 20____</p>
     </div>
  </div>
+
+    <div class="mt-5">
+        <div style="display: flex;">
+            <img style="margin-left: 500px;" src="https://static.wixstatic.com/media/0aad82_fc6ea6c310e34f679f36449f7a2cbf50~mv2.jpg/v1/fill/w_1000,h_1000,al_c,q_85/ULBRA.jpg" width="100px" height="100px"/>
+            <div class="text-center font-weight-bold" style="font-weight: 700;">
+                <p> UNIVERSIDADE LUTERANA DO BRASIL </p> 
+                <p>Curso de Psicologia</p> 
+                <p>Serviço Escola de Psicologia</p> 
+        
+                <p>TERMO DE COMPROMISSO</p> 
+            </div>
+        </div>
+        <div class="px-5" style="margin-top: 50px;">
+            <div style="font-weight: 500;">
+                <p>Eu,<spam style=" border-bottom: 1px solid black; width: 500px; display: inline-block; height:15px;"> {{ $data->name }} </spam>, </p> 
+                <p>portador do RG nº<spam style=" border-bottom: 1px solid black; width: 380px; display: inline-block; height:15px;"> {{ $data->rg }} </spam>, responsável</p> 
+                <p>por__________________________, comprometo-me com o Serviço Escola de</p> 
+                <p>Psicologia e com o(a) estagiário(a)_____________________________________ e</p> 
+                <p>alego estar ciente de que:</p>
+            </div>
+            <ul>
+                <li>Os atendimentos serão realizados por estagiários(as), em final de curso orientados(as) por um psicólogo(a) supervisor(a).</li>
+                <li>As sessões terão duração de 50 minutos, quando for individual e 90 minutos quando for grupal.</li>
+                <li>As informações cedidas durante o processo de atendimento serão mantidas sob sigilo conforme o código de ética profissional.</li>
+                <li>Autorizo, para fins de pesquisa o uso de informações coletadas durante as sessões de tratamento, desde que estas não me identifiquem.</li>
+                <li>Não poderei faltar mais que três vezes consecutivas ou cinco alternadas, mediante risco de perder o direito de utilizar o serviço, firmando meu desligamento.</li>
+                <li>Entrarei em contato com o serviço desmarcando o atendimento quando não puder comparecer, com um dia de antecedência.</li>
+                <li>Os atendimentos serão:</li>
+            </ul>
+            <p>(    ) semanais, sempre nas___________________________.</p>
+            <p>(    ) quinzenais, sempre nas _________________________.</p>
+            <p>(    ) mensais, sempre nas ___________________________.</p>
+            <div style="margin-left: 70px; margin-top: 30px;">
+                <p>Estagiário(a)</p>                                                           
+                <p style="margin-top: -100px; margin-left: 300px;">Paciente/Responsável</p>
+            </div>
+        </div>
+           
+        
+        <div style="margin-left: 120px; margin-top: 30px;">
+           <p style="display: inline-block ; width: 300px;">Supervisor(a)</p> 					
+           <span>Data ____/____/____</span> 
+        </div>
+    </div>
 @endsection

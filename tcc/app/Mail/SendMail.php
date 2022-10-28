@@ -29,6 +29,6 @@ class SendMail extends Mailable
      */
     public function build()
     {
-        return $this->from(config('mail.from.address'))->subject('Novo Usuário')->view('email.message')->with('data', $this->data);
+        return $this->from(config('mail.from.address'))->subject('Nova Consulta Marcada')->view('email.message')->with('data', $this->data);
     }
 }

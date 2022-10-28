@@ -42,7 +42,7 @@ $(function() {
 
       <div  class="mb-3 w-25 ms-2">
         <label  class="form-label"> Estado civil</label>
-        <input type="text" name="marital_status" placeholder="Ex. Seu Pai"  value="{{$patient->marital_status}}" class="form-control">
+        <input type="text" name="marital_status" placeholder="Ex. solteiro"  value="{{$patient->marital_status}}" class="form-control">
       </div>
     </div>
     <div class="d-flex">
@@ -58,14 +58,14 @@ $(function() {
   
       <div  class="mb-3 w-25">
         <label  class="form-label"> Cidade do Responsável </label>
-        <input type="text" name="city_father" placeholder="Ex. rio" value="{{$patient->city_father}}" class="form-control">
+        <input type="text" name="city_father" placeholder="Ex. Rio do sul" value="{{$patient->city_father}}" class="form-control">
       </div>
     </div>
 
     <div class="d-flex">
       <div class="mb-3 w-25">
         <label  class="form-label"> Telefone </label>
-        <input type="text" name="telephone" placeholder="Ex. 51-999999999" value="{{$patient->telephone}}" id="phone" class="form-control">
+        <input type="text" name="telephone" placeholder="Ex. (21) 99999-9999" value="{{$patient->telephone}}" id="phone" class="form-control">
       </div>
 
       <div class="mb-3 w-25 mx-2">
@@ -88,12 +88,12 @@ $(function() {
   
       <div class="mb-3 w-25 mx-2">
         <label  class="form-label"> complemento </label>
-        <input type="text" name="Complement" placeholder="Ex. Rua candelaria" value="{{$patient->Complement}}" class="form-control">
+        <input type="text" name="Complement" placeholder="Ex.  casa 1" value="{{$patient->Complement}}" class="form-control">
       </div>
 
       <div class="mb-3 w-25">
         <label  class="form-label"> Numero da casa </label>
-        <input type="text" name="house_number" placeholder="Ex. Rua candelaria" value="{{$patient->house_number}}" class="form-control">
+        <input type="text" name="house_number" placeholder="Ex. 14" value="{{$patient->house_number}}" class="form-control">
       </div>
 
       <div class="mb-3 w-25 mx-2">
