@@ -29,9 +29,9 @@ return new class extends Migration
       $table->string('Complement', 100);
       $table->string('district', 100);
       $table->string('city', 100);
-      $table->string('name_father', 100);
-      $table->string('address_father', 100);
-      $table->string('city_father', 100);
+      $table->string('name_father', 100)->nullable();
+      $table->string('address_father', 100)->nullable();
+      $table->string('city_father', 100)->nullable();
       $table->timestamps();
     });
   }
