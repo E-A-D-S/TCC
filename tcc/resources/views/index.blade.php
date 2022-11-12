@@ -23,7 +23,12 @@ $(function() {
         <circle cx="24" cy="16" r="10" stroke="#212B36" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></circle>
         </svg>
         <div>
-          <p style="font-size:15px ; margin-left:4px;">Entrar</p>
+          @guest
+            <p style="font-size:15px ; margin-left:4px;">Entrar</p>
+          @endguest
+          @Auth
+          <p style="font-size:15px ; margin-left:4px;">Bem vindo, <br> {{ Auth::user()->name }}</p>
+          @endAuth
         </div>
       </button>
       <ul class="dropdown-menu">
