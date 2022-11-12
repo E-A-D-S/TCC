@@ -34,10 +34,25 @@ $(function() {
         <label  class="form-label"> Data de Nascimento </label>
         <input type="date" name="birth_date" placeholder="Ex. 10/10/2020"  value="{{$patient->birth_date}}" id="idade" class="form-control">
       </div>
-  
+
+      <?php
+        $data = $patient->birth_date;
+
+        // separando yyyy, mm, ddd
+        list($ano, $mes, $dia) = explode('-', $data);
+
+        // data atual
+        $hoje = mktime(0, 0, 0, date('m'), date('d'), date('Y'));
+        // Descobre a unix timestamp da data de nascimento do fulano
+        $nascimento = mktime( 0, 0, 0, $mes, $dia, $ano);
+
+        // cálculo
+        $idade = floor((((($hoje - $nascimento) / 60) / 60) / 24) / 365.25);
+      ?>
+
       <div class="mb-3 w-25">
         <label  class="form-label"> Idade </label>
-        <input type="number" name="age" placeholder="Ex. 28 "  value="{{$patient->age}}" class="form-control">
+        <input type="number" name="age" placeholder="Ex. 28 "  value="{{ $idade }}" class="form-control" disabled>
       </div>
 
       <div  class="mb-3 w-25 ms-2">
@@ -45,22 +60,25 @@ $(function() {
         <input type="text" name="marital_status" placeholder="Ex. solteiro"  value="{{$patient->marital_status}}" class="form-control">
       </div>
     </div>
-    <div class="d-flex">
-      <div  class="mb-3 w-50">
-        <label  class="form-label"> Responsável </label>
-        <input type="text" name="name_father" placeholder="Ex. Seu Pai" value="{{$patient->name_father}}" class="form-control">
+    
+    @if($idade < 18)
+      <div class="d-flex">
+        <div  class="mb-3 w-50">
+          <label  class="form-label"> Responsável </label>
+          <input type="text" name="name_father" placeholder="Ex. Seu Pai" value="{{$patient->name_father}}" class="form-control" disabled>
+        </div>
+    
+        <div class="mb-3 w-25 mx-2">
+          <label  class="form-label"> Endereco do Responsável </label>
+          <input type="text" name="address_father" placeholder="Ex. Rua candelaria" value="{{$patient->address_father}}" class="form-control" disabled>
+        </div>
+    
+        <div  class="mb-3 w-25">
+          <label  class="form-label"> Cidade do Responsável </label>
+          <input type="text" name="city_father" placeholder="Ex. rio" value="{{$patient->city_father}}" class="form-control" disabled>
+        </div>
       </div>
-  
-      <div class="mb-3 w-25 mx-2">
-        <label  class="form-label"> Endereco do Responsável </label>
-        <input type="text" name="address_father" placeholder="Ex. Rua candelaria" value="{{$patient->address_father}}" class="form-control">
-      </div>
-  
-      <div  class="mb-3 w-25">
-        <label  class="form-label"> Cidade do Responsável </label>
-        <input type="text" name="city_father" placeholder="Ex. Rio do sul" value="{{$patient->city_father}}" class="form-control">
-      </div>
-    </div>
+    @endif
 
     <div class="d-flex">
       <div class="mb-3 w-25">

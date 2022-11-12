@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Mail\SendMail;
+use App\Models\model_has_permission;
 use App\Models\Patient;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Mail;
@@ -17,10 +19,22 @@ class UserController extends Controller
   function homeScreen () {
     return View('homeScreen');
   }
+  function permission() {
+    $permission = model_has_permission::all();
+    $user = User::all();
+    return View('permission', compact('permission', 'user'));
+  }
 
   function index()
   {
    $patient = Patient::all();
+   $search = request('search');
+   if($search ) {
+     $patient = Patient::where([
+            ['name', 'like', '%' . $search . '%']
+      ])->get();
+      return view('admin.index', compact('patient'));
+    }   
     return view('admin.index', compact('patient'));
   }
 
@@ -33,7 +47,6 @@ class UserController extends Controller
     $patient->rg = $request->rg;
     $patient->cpf = $request->cpf;
     $patient->birth_date = $request->birth_date;
-    $patient->age = $request->age;
     $patient->telephone = $request->telephone;
     $patient->time_service = $request->time_service;
     $patient->consultation = $request->consultation;
@@ -46,7 +59,7 @@ class UserController extends Controller
     $patient->address_father = $request->address_father;
     $patient->city_father = $request->city_father;
       
-    $patient ->save();
+    $patient->save();
 
     $data = array(
       'name'=> $request->name,
@@ -99,6 +112,20 @@ class UserController extends Controller
     $data = Patient::find($id);
     $pdf = Pdf::loadView('pdf.dicePatient', compact('data'));
     return $pdf->stream('dicePatient.pdf');
+  }
+
+  public function permissionEdit($id) {
+    $data = model_has_permission::where([
+      ['model_id', '=', $id ]
+    ])->get();
+    return view('permissionEdit', compact('data'));
+  }
+
+  public function permissionUpdate(Request $request, $id)
+  {
+    $data = request()->except(['_method', '_token']);
+    model_has_permission::where('model_id', $id)->update($data);
+    return redirect()->route('paciente.permission');
   }
     
 }

@@ -52,7 +52,6 @@ $(function() {
 
     </div>
   @endif
-  
   <div class="text-center py-3">
     <h1>Formulario</h1>
   </div>
@@ -68,12 +67,7 @@ $(function() {
   
       <div class="mb-3 w-25 mx-2">
         <label  class="form-label"> Data de Nascimento*</label>
-        <input type="date" name="birth_date" placeholder="Ex. 10/10/2020" id="idade" class="form-control" required>
-      </div>
-  
-      <div class="mb-3 w-25">
-        <label  class="form-label"> Idade*</label>
-        <input type="number" name="age" placeholder="Ex. 28 " class="form-control" required>
+        <input type="date" name="birth_date" id="age" placeholder="Ex. 10/10/2020" id="idade" class="form-control" required>
       </div>
 
       <div  class="mb-3 w-25 ms-2">
@@ -81,20 +75,20 @@ $(function() {
         <input type="text" name="marital_status" placeholder="Ex. solteiro" class="form-control">
       </div>
     </div>
-    <div class="d-flex">
+    <div class="popup permission" >
       <div  class="mb-3 w-50">
         <label  class="form-label"> Responsável </label>
-        <input type="text" name="name_father" placeholder="Ex. Seu Pai" class="form-control">
+        <input id="input1" type="text" name="name_father" placeholder="Ex. Seu Pai" class="form-control" >
       </div>
   
       <div class="mb-3 w-25 mx-2">
         <label  class="form-label"> Endereco do Responsável </label>
-        <input type="text" name="address_father" placeholder="Ex. Rua candelaria" class="form-control">
+        <input id="input2" type="text" name="address_father" placeholder="Ex. Rua candelaria" class="form-control">
       </div>
   
       <div  class="mb-3 w-25">
         <label  class="form-label"> Cidade do Responsável </label>
-        <input type="text" name="city_father" placeholder="Ex. Rio do sul" class="form-control">
+        <input id="input3" type="text" name="city_father" placeholder="Ex. Rio do sul" class="form-control" >
       </div>
     </div>
 
@@ -163,6 +157,9 @@ $(function() {
   background-color: #585dd6;
 }
 .dropdown-toggle::after {
+  display: none;
+}
+.permission {
   display: none;
 }
 </style>

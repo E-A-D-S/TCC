@@ -13,5 +13,6 @@
 </head>
 <body>
 @yield('content')
+<script src="js/agePermission.js"></script>
 </body>
 </html>
