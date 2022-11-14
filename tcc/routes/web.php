@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::match(['get', 'post'], '/home', [UserController::class, 'home'])->name('paciente.home');
 Route::match(['get', 'post'], '/', [UserController::class, 'homeScreen'])->name('paciente.homeScreen');
+Route::match(['get', 'post'], 'paciente/store', [UserController::class, 'store'])->name('paciente.store');
 
 Route::prefix('paciente')->middleware('can:admin')->group(function () {
     Route::match(['get', 'post'], '', [UserController::class, 'index'])->name('paciente.index');
@@ -23,7 +24,7 @@ Route::prefix('paciente')->middleware('can:admin')->group(function () {
     Route::match(['get', 'post'], '/permission/{id}', [UserController::class, 'permissionEdit'])->name('paciente.permission.edit');
     Route::put('/permission/update/{id}', [UserController::class, 'permissionUpdate'])->name('paciente.permission.update');
     Route::match(['get', 'post'], '/create', [UserController::class, 'create'])->name('paciente.create');
-    Route::match(['get', 'post'], '/store', [UserController::class, 'store'])->name('paciente.store');
+    
     Route::delete('/{id}', [UserController::class, 'destroy'])->name('paciente.destroy');
     Route::match(['get', 'post'], '/edit/{id}', [UserController::class, 'edit'])->name('paciente.edit');
     Route::match(['get', 'post'], '/view/{id}', [UserController::class, 'view'])->name('paciente.view');

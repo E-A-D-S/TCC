@@ -39,5 +39,4 @@ $('#age').keyup(function(){
         let dados3 = document.getElementById('input3');
         dados3.setAttribute('required', 'required');
     }
-    console.log('voce e de menor');
 });
