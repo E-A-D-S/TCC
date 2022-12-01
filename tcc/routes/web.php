@@ -14,8 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::match(['get', 'post'], '/home', [UserController::class, 'home'])->name('paciente.home');
-Route::match(['get', 'post'], '/', [UserController::class, 'homeScreen'])->name('paciente.homeScreen');
+Route::match(['get', 'post'], '/form', [UserController::class, 'home'])->name('paciente.home');
+Route::match(['get', 'post'], '/home', [UserController::class, 'homeScreen'])->name('paciente.homeScreen');
 Route::match(['get', 'post'], 'paciente/store', [UserController::class, 'store'])->name('paciente.store');
 
 Route::prefix('paciente')->middleware('can:admin')->group(function () {
@@ -32,6 +32,9 @@ Route::prefix('paciente')->middleware('can:admin')->group(function () {
     Route::match(['get', 'post'], 'generatePdf/{id}', [UserController::class, 'generatePdf'])->name('paciente.generatePdf');
 });
 
+Route::match(['get', 'post'], '/', function() {
+ return redirect('/login');
+});
 
 Route::middleware([
     'auth:sanctum',
